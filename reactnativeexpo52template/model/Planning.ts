@@ -29,9 +29,9 @@ export class Planning {
   public static fromJsonObject(jsonObject: any): Planning {
     if (!jsonObject) return null;
     let result = new Planning();
-    result.to = jsonObject.to;
-    result.from = jsonObject.from;
-    result.slots = jsonObject.slots;
+    result.to = new Date(jsonObject.to);
+    result.from = new Date(jsonObject.from);
+    //result.slots = ; A FAIRE
 
     return result;
   }
