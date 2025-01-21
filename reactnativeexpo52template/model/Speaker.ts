@@ -46,10 +46,22 @@ export class Speaker {
   }
 
   public static fromJsonObject(jsonObject: any): Speaker {
-    return null;
+    if (!jsonObject) return null;
+    let result = new Speaker();
+    result.name = jsonObject.name;
+    result.description = jsonObject.description;
+    result.image = jsonObject.image;
+    result.linkedin = jsonObject.linkedin;
+    result.twitter = jsonObject.twitter;
+
+    return result;
   }
 
   public static fromJsonArray(jsonArray: any): Speaker[] {
-    return null;
+    let speakers = []
+    jsonArray.forEach(obj => {
+        speakers.push(this.fromJsonObject(obj));
+    });
+    return speakers;
   }
 }
