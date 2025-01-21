@@ -23,4 +23,14 @@ export class Conference {
   public set to(value: Date) {
     this._to = value;
   }
+
+  public static fromJsonObject(jsonObject: any): Conference {
+    if (!jsonObject) return null;
+    let result = new Conference();
+    result.name = jsonObject.name;
+    result.from = jsonObject.from;
+    result.to = jsonObject.to;
+
+    return result;
+  }
 }

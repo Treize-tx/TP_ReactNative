@@ -1,6 +1,5 @@
-import { Slot
+import { Slot } from "./Slot";
 
- } from "./Slot";
 export class Planning {
   private _from: Date;
   private _to: Date;
@@ -26,5 +25,24 @@ export class Planning {
   public set slots(value: Slot[]) {
     this._slots = value;
   }
-  
+
+  public static fromJsonObject(jsonObject: any): Planning {
+    if (!jsonObject) return null;
+    let result = new Planning();
+    result.to = jsonObject.to;
+    result.from = jsonObject.from;
+    result.slots = jsonObject.slots;
+
+    return result;
+  }
+
+  public static fromJsonArray(jsonArray: any): Planning[] {
+    let plannings = []
+    jsonArray.forEach(obj => {
+        plannings.push(this.fromJsonObject(obj));
+    });
+    return plannings;
+  }
+
+
 }

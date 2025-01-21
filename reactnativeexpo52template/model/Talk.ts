@@ -1,8 +1,7 @@
 import { Speaker } from "./Speaker";
 import { Slot } from "./Slot";
 
-
-export class Talk {
+export class Talk extends Slot{
   private _room: string;
   private _theme: string;
   private _format: string;
@@ -43,4 +42,20 @@ export class Talk {
   public set speakers(value: Speaker[]) {
     this._speakers = value;
   }
+
+  public get type() : string{
+    return this.type
+  }
+
+  public static fromJsonObject(jsonObject: any): Talk {
+    if (!jsonObject) return null;
+        let result = new Talk();
+        result.room = jsonObject.room;
+        result.theme = jsonObject.theme;
+        result.format = jsonObject.format;
+        result.description = jsonObject.description;
+        result.speakers = jsonObject.speakers;
+        
+        return result;
+    }
 }

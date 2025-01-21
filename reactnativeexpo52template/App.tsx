@@ -32,9 +32,15 @@ export default function App() {
             }]}
                           onLayout={onLayoutRootView}>
                 <StatusBar barStyle={'dark-content'}/>
-                <View style={styles.helloworld}>
-                    <Text style={styles.text}>hell World !</Text>
-                </View>
+                <Text style={styles.text}>Hello World !</Text>
+                <Text style={styles.text}>{CONFERENCE_DATA.name}</Text>
+                <Text style={styles.text}>{format(CONFERENCE_DATA.from, "EE d MMM yyyy  ")}</Text>
+                <Text style={styles.text}>{format(CONFERENCE_DATA.to, "EE d MMM yyyy  ")}</Text>
+                <Text style={styles.text}>{SPEAKERS_DATA[0].name}</Text>
+                <Image style={{height: 150, width: 150}} source={{uri: SPEAKERS_DATA[0].image}}/>
+                <Text style={styles.text}>{PLANNING_DATA.length}</Text>
+                <Text style={styles.text}>{PLANNING_DATA[0].slots[0].type()}</Text>
+                <Text style={styles.text}>{PLANNING_DATA[1].slots[0].type()}</Text>
             </SafeAreaView>
         </>
     );
