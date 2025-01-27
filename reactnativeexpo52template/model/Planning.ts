@@ -1,4 +1,4 @@
-import { Slot } from "./Slot";
+import { Slot } from './Slot';
 
 export class Planning {
   private _from: Date;
@@ -28,10 +28,12 @@ export class Planning {
 
   public static fromJsonObject(jsonObject: any): Planning {
     if (!jsonObject) return null;
-    let result = new Planning();
+    let result = new Planning(); 
     result.to = new Date(jsonObject.to);
     result.from = new Date(jsonObject.from);
-    //result.slots = ; A FAIRE
+    jsonObject.Slots.forEach(slot => {
+      result.slots.push(slot)
+    });
 
     return result;
   }
@@ -43,6 +45,4 @@ export class Planning {
     });
     return plannings;
   }
-
-
 }
