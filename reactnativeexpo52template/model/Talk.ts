@@ -1,16 +1,18 @@
 import { Speaker } from "./Speaker";
+import { Slot } from "./Slot";
 
-export class Talk {
+export class Talk extends Slot{
+  private _room: string;
   private _theme: string;
   private _format: string;
   private _description: string;
   private _speakers: Speaker[];
 
-  constructor(theme: string = '', format: string = '', description: string = '', speakers: Speaker[] = []) {
-    this._theme = theme;
-    this._format = format;
-    this._description = description;
-    this._speakers = speakers;
+  public get room(): string {
+    return this._room;
+  }
+  public set room(value: string) {
+    this._room = value;
   }
 
   public get theme(): string {
@@ -41,19 +43,20 @@ export class Talk {
     this._speakers = value;
   }
 
-  public type(): string {
-    return 'TALK';
+  public type() : string{
+    return this.type();
   }
 
   public static fromJsonObject(jsonObject: any): Talk {
     if (!jsonObject) return null;
-    let speakers = Array.isArray(jsonObject.speakers) ? jsonObject.speakers.map((speaker: any) => new Speaker(speaker.name, speaker.id)) : [];
-    let result = new Talk(
-      jsonObject.theme || '',
-      jsonObject.format || '',
-      jsonObject.description || '',
-      speakers
-    );
-    return result;
-  }
+        let result = new Talk();
+        result.room = jsonObject.room;
+        result.theme = jsonObject.theme;
+        result.format = jsonObject.format;
+        result.description = jsonObject.description;
+        jsonObject.speakers.forEach((element: any) => {
+            result.speakers.push(Speaker.fromJsonObject(element));
+        });
+        return result;
+    }
 }

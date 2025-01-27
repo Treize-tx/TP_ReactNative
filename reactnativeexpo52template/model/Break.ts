@@ -6,14 +6,15 @@ export class Break extends Slot {
     }
 
     public type(): string {
-        return 'BREAK';
+        return this.type();
     }
 
     public static fromJsonObject(jsonObject: any): Break {
         if (!jsonObject) return null;
-        let name = jsonObject.name !== undefined ? jsonObject.name : '';
-        let id = jsonObject.id !== undefined ? jsonObject.id : 0;
-        let result = new Break(name, id);
+        let result = new Break();
+        result.name = jsonObject.name;
+        result.id = jsonObject.id;
+
         return result;
     }
 }
