@@ -1,6 +1,14 @@
+import { Break } from "./Break";
+import { Talk } from "./Talk";
+
 export abstract class Slot {
   private _name: string;
   private _id: number;
+
+  constructor(name: string = '', id: number = 0) {
+    this._name = name;
+    this._id = id;
+  }
 
   public get name(): string {
     return this._name;
@@ -16,7 +24,13 @@ export abstract class Slot {
     this._id = value;
   }
 
-  public get type(): string{
-    return this.type
+  public type(): string{
+    if (this instanceof Break) {
+      return 'BREAK';
+    } else if (this instanceof Talk) {
+      return 'TALK';
+    } else {
+      return 'UNKNOWN';
+    }
   }
 }

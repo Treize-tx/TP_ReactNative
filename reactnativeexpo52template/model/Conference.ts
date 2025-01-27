@@ -3,6 +3,12 @@ export class Conference {
   private _from: Date;
   private _to: Date;
 
+  constructor(name: string = '', from: Date = new Date(), to: Date = new Date()) {
+    this._name = name;
+    this._from = from;
+    this._to = to;
+  }
+
   public get name(): string {
     return this._name;
   }

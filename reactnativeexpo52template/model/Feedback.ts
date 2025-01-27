@@ -2,6 +2,11 @@ export class Feedback {
   private _content: string;
   private _rating: string;
 
+  constructor(content: string = '', rating: string = '') {
+    this._content = content;
+    this._rating = rating;
+  }
+
   public get content(): string {
     return this._content;
   }

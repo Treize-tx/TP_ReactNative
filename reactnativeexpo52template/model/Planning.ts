@@ -31,17 +31,19 @@ export class Planning {
     let result = new Planning(); 
     result.to = new Date(jsonObject.to);
     result.from = new Date(jsonObject.from);
-    jsonObject.Slots.forEach(slot => {
-      result.slots.push(slot)
-    });
+    if (jsonObject.Slots && Array.isArray(jsonObject.Slots)) {
+      jsonObject.Slots.forEach(slot => {
+        result.slots.push(slot)
+      });
+    }
 
     return result;
   }
 
   public static fromJsonArray(jsonArray: any): Planning[] {
     let plannings = []
-    jsonArray.forEach(obj => {
-        plannings.push(this.fromJsonObject(obj));
+    jsonArray.forEach(jsonObject => {
+      plannings.push(Planning.fromJsonObject(jsonObject))
     });
     return plannings;
   }

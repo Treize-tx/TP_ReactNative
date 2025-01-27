@@ -5,8 +5,14 @@ export class Speaker {
   private _linkedin: string;
   private _twitter: string;
 
-  constructor() {}
-
+  constructor(name: string = '', description: string = '', image: string = '', linkedin: string = '', twitter: string = '') {
+    this._name = name;
+    this._description = description;
+    this._image = image;
+    this._linkedin = linkedin;
+    this._twitter
+  }
+  
   public get name(): string {
     return this._name;
   }
