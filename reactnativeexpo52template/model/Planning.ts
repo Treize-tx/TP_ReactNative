@@ -22,11 +22,12 @@ export class Planning {
   public get slots(): Slot[] {
     return this._slots;
   }
+
   public set slots(value: Slot[]) {
     this._slots = value;
   }
 
-  public static fromJsonObject(jsonObject: any): Planning {
+  private static fromJsonObject(jsonObject: any): Planning {
     if (!jsonObject) return null;
     let result = new Planning(); 
     result.to = new Date(jsonObject.to);

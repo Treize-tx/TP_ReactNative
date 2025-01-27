@@ -42,7 +42,7 @@ export default function App() {
                 <Image style={{height: 150, width: 150}} source={{uri: SPEAKERS_DATA[0].image}}/>
                 <Text style={styles.text}>{PLANNING_DATA.length}</Text>
                 <Text style={styles.text}>{PLANNING_DATA[0].slots[0].type()}</Text>
-                {/* <Text style={styles.text}>{PLANNING_DATA[1].slots[0].type()}</Text> */}
+                <Text style={styles.text}>{PLANNING_DATA[1].slots[0].type()}</Text>
             </SafeAreaView>
         </>
     );
