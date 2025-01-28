@@ -1,5 +1,6 @@
 import { Speaker } from "./Speaker";
 import { Slot } from "./Slot";
+import { format } from 'date-fns';
 
 export class Talk extends Slot{
   private _room: string;
@@ -22,9 +23,10 @@ export class Talk extends Slot{
     this._theme = value;
   }
 
-  public get format(): string {
+  public get format(){
     return this._format;
   }
+
   public set format(value: string) {
     this._format = value;
   }
@@ -43,8 +45,8 @@ export class Talk extends Slot{
     this._speakers = value;
   }
 
-  public type() : string{
-    return this.type();
+  public override type() : string{
+    return "TALK";
   }
 
   public static fromJsonObject(jsonObject: any): Talk {
@@ -54,9 +56,10 @@ export class Talk extends Slot{
         result.theme = jsonObject.theme;
         result.format = jsonObject.format;
         result.description = jsonObject.description;
-        jsonObject.speakers.forEach((element: any) => {
-            result.speakers.push(Speaker.fromJsonObject(element));
-        });
+        result.speakers = []
+        for (let speaker of jsonObject.speakers) {
+          result.speakers.push(speaker);
+        }
         return result;
     }
 }

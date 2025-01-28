@@ -1,4 +1,6 @@
 import { Slot } from './Slot';
+import { Break } from './Break';
+import { Talk } from './Talk';
 
 export class Planning {
   private _from: Date;
@@ -27,25 +29,28 @@ export class Planning {
     this._slots = value;
   }
 
-  private static fromJsonObject(jsonObject: any): Planning {
-    if (!jsonObject) return null;
-    let result = new Planning(); 
-    result.to = new Date(jsonObject.to);
-    result.from = new Date(jsonObject.from);
-    if (jsonObject.Slots && Array.isArray(jsonObject.Slots)) {
-      jsonObject.Slots.forEach(slot => {
-        result.slots.push(slot)
-      });
-    }
-
-    return result;
-  }
-
   public static fromJsonArray(jsonArray: any): Planning[] {
     let plannings = []
     jsonArray.forEach(jsonObject => {
       plannings.push(Planning.fromJsonObject(jsonObject))
     });
     return plannings;
+  }
+
+  private static fromJsonObject(jsonObject: any): Planning {
+    if (!jsonObject) return null;
+    let result = new Planning();
+    result.to = new Date(jsonObject.to);
+    result.from = new Date(jsonObject.from);
+    const talks:any[] = jsonObject.talks
+    result.slots = []
+    talks.forEach(talk =>  {
+      if (talk.format === "Break") {
+            result.slots.push(Break.fromJsonObject(talk));
+          } else {
+            result.slots.push(Talk.fromJsonObject(talk));
+          }
+    })
+    return result;
   }
 }
