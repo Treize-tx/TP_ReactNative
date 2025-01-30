@@ -1,4 +1,6 @@
 import React, {useCallback} from "react";
+import {fr} from "date-fns/locale";
+import setDefaultOptions from 'date-fns/setDefaultOptions';
 import {useFonts} from 'expo-font';
 
 import * as SplashScreen from 'expo-splash-screen';
@@ -8,7 +10,8 @@ import { format } from 'date-fns'
 import { CONFERENCE_DATA, PLANNING_DATA, SPEAKERS_DATA } from "./res/Stub";
 
 export default function App() {
-
+    setDefaultOptions({locale: fr});
+    
     const [fontsLoaded] = useFonts({
         'SpaceMono': require('./assets/fonts/SpaceMono-Regular.ttf')
     });
