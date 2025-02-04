@@ -8,6 +8,9 @@ import {SafeAreaView, StatusBar, StyleSheet, Text, Image, View} from "react-nati
 import {Colors} from "@/constants/Colors";
 import { format } from 'date-fns'
 import { CONFERENCE_DATA, PLANNING_DATA, SPEAKERS_DATA } from "./res/Stub";
+import HomeScreen from "./view/HomeScreen";
+import { Speaker } from "./model/Speaker";
+import SpeakerScreen from "./view/SpeakersScreen";
 
 export default function App() {
     setDefaultOptions({locale: fr});
@@ -28,7 +31,7 @@ export default function App() {
 
     return (
         <>
-            <SafeAreaView style={{
+            {/* <SafeAreaView style={{
                 flex: 0, backgroundColor: Colors.light.background
             }}
                           onLayout={onLayoutRootView}/>
@@ -49,6 +52,14 @@ export default function App() {
                     <Text style={styles.text}>{PLANNING_DATA[1].slots[0].type()}</Text>
                 </View>
             </SafeAreaView>
+            <HomeScreen 
+                conferenceName={CONFERENCE_DATA.name} 
+                from={format(CONFERENCE_DATA.from, "EE d MMM")} 
+                to={format(CONFERENCE_DATA.to, "EE d MMM yyyy  ")}
+            /> */}
+            <SpeakerScreen
+                speakers = {SPEAKERS_DATA}
+            />
         </>
     );
 }
