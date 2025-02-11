@@ -4,7 +4,7 @@ import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { Speaker } from '../model/Speaker';
 import { Colors } from '@/constants/Colors';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { SpeakerComponent } from '@/components/SpeakerComponent';
+import { SpeakerComponent } from '@/components/Speaker/SpeakerComponent';
 import { RootStackParamList } from '@/types/RootStack';
 
 interface SpeakersScreenProps {

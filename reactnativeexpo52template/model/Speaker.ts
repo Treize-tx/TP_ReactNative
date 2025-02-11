@@ -10,7 +10,7 @@ export class Speaker {
     this._description = description;
     this._image = image;
     this._linkedin = linkedin;
-    this._twitter
+    this._twitter = twitter;
   }
   
   public get name(): string {
