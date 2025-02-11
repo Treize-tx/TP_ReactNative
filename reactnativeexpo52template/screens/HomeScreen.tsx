@@ -2,13 +2,9 @@ import { Hall32 } from "@/model/Configuration";
 import React from "react";
 import { View, StyleSheet, Text, Image } from "react-native";
 
-interface HomeScreenProps {
-    conferenceName: string;
-    from: string;
-    to: string;
-}
 
-const HomeScreen: React.FC<HomeScreenProps> = ({ conferenceName, from, to }) => {
+const HomeScreen = ({ route }) => {
+    const { conferenceName, from, to } = route.params;
     return (
         <View style={styles.helloworld}>
              <Text style={styles.title}> {conferenceName} </Text>

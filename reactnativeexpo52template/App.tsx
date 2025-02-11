@@ -11,7 +11,10 @@ import { CONFERENCE_DATA, PLANNING_DATA, SPEAKERS_DATA } from "./res/Stub";
 import HomeScreen from "./screens/HomeScreen";
 import { Speaker } from "./model/Speaker";
 import SpeakerScreen from "./screens/SpeakersScreen";
-import TabBar from "./components/TabBar";
+import TabBar from "./components/Navigation";
+import { NavigationContainer } from "@react-navigation/native";
+import Navigation from "./components/Navigation";
+import SpeakersNavigator from "./components/SpeakersNavigator";
 
 export default function App() {
     setDefaultOptions({locale: fr});
@@ -32,7 +35,12 @@ export default function App() {
 
     return (
         <>
-            <TabBar/>
+            <Navigation
+                conferenceName={CONFERENCE_DATA.name}
+                from={format(CONFERENCE_DATA.from, "EE d MMM")}
+                to={format(CONFERENCE_DATA.to, "EE d MMM yyyy")}
+                speakers={SPEAKERS_DATA}
+            />
         </>
             // {/* <SafeAreaView style={{
             //     flex: 0, backgroundColor: Colors.light.background
