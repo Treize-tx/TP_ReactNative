@@ -4,14 +4,14 @@ import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { Speaker } from '../model/Speaker';
 import { Colors } from '@/constants/Colors';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import SpeakerComponent from '@/components/SpeakerComponent';
+import { SpeakerComponent } from '@/components/SpeakerComponent';
 import { RootStackParamList } from '@/types/RootStack';
 
-interface SpeakerScreenProps {
+interface SpeakersScreenProps {
   speakers: Speaker[];
 }
 
-const SpeakerScreen: React.FC<SpeakerScreenProps> = ({ speakers }) => {
+export const SpeakersScreen: React.FC<SpeakersScreenProps> = ({ speakers }) => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   return (
     <SafeAreaProvider>
@@ -39,5 +39,3 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 });
-
-export default SpeakerScreen;

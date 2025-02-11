@@ -1,10 +1,9 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '@/screens/HomeScreen';
-import SpeakersNavigator from '@/components/SpeakersNavigator';
-import { Ionicons } from '@expo/vector-icons';
-import { Image, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { HomeScreen } from "@/screens/HomeScreen";
+import { SpeakersNavigator } from "@/components/SpeakersNavigator";
+import { Image, View, StyleSheet } from "react-native";
 
 interface NavigationProps {
   conferenceName: string;
@@ -15,28 +14,42 @@ interface NavigationProps {
 
 const Tab = createBottomTabNavigator();
 const homeIcon = require("@/assets/images/companion_icon.png");
+const speakersIcon= require ("@/assets/images/speakers.png")
 
-const Navigation: React.FC<NavigationProps> = ({ conferenceName, from, to, speakers }) => {
+export const Navigation: React.FC<NavigationProps> = ({
+  conferenceName,
+  from,
+  to,
+  speakers,
+}) => {
   return (
     <NavigationContainer>
-      <Tab.Navigator id={undefined}
+      <Tab.Navigator
+        id={undefined}
         initialRouteName="Accueil"
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-            if (route.name === 'Accueil') {
+          tabBarIcon: ({ focused, color }) => {
+            if (route.name === "Accueil") {
+              return (
+                <View
+                  style={[
+                    styles.iconContainer,
+                    { backgroundColor: focused ? color : "light blue" },
+                  ]}
+                >
+                  <Image
+                    source={homeIcon}
+                    style={styles.homeIcon}
+                  />
+                </View>
+              );
+            } else if (route.name === "Speakers") {
               return (
                 <Image
-                  source={homeIcon}
-                  style={{
-                    width: 30,
-                    height: 30,
-                    tintColor: focused ? color : undefined,
-                  }}
+                  source={speakersIcon}
+                  style={styles.speakersIcon}
                 />
               );
-            } else if (route.name === 'Speakers') {
-              return <Ionicons name={iconName} size={size} color={color} />;
             }
           },
         })}
@@ -57,4 +70,23 @@ const Navigation: React.FC<NavigationProps> = ({ conferenceName, from, to, speak
   );
 };
 
-export default Navigation;
+const styles = StyleSheet.create({
+  iconContainer: {
+    width: 60,
+    height: 60,
+    borderRadius: 90,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 30,
+  },
+  homeIcon: {
+    width: 50,
+    height: 50,
+    borderRadius: 90,
+  },
+  speakersIcon: {
+    width: 30,
+    height: 30,
+    borderRadius: 90,
+  },
+});

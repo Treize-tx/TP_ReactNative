@@ -5,7 +5,7 @@ interface SpeakerProps {
     route: any;
 }
 
-const Speaker: React.FC<SpeakerProps> = ({ route }) => {
+export const Speaker: React.FC<SpeakerProps> = ({ route }) => {
     const { speaker } = route.params;
     return (
         <View style={styles.container}>
@@ -45,5 +45,3 @@ const styles = StyleSheet.create({
         color: 'gray',
     },
 });
-
-export default Speaker;

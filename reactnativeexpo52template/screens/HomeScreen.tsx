@@ -3,7 +3,7 @@ import React from "react";
 import { View, StyleSheet, Text, Image } from "react-native";
 
 
-const HomeScreen = ({ route }) => {
+export const HomeScreen = ({ route }) => {
     const { conferenceName, from, to } = route.params;
     return (
         <View style={styles.helloworld}>
@@ -37,5 +37,3 @@ const styles = StyleSheet.create({
         height: 10,
     }
 });
-
-export default HomeScreen;

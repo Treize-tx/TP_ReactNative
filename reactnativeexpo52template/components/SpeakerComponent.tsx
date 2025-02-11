@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 
 type SpeakerProps = { name: string, image: string };
 
-const SpeakerComponent = ({ name, image }: SpeakerProps) => (
+export const SpeakerComponent = ({ name, image }: SpeakerProps) => (
   <View style={styles.container}>
     <Image style={styles.image} source={{ uri: image }} />
     <Text style={styles.text}>{name}</Text>
@@ -27,5 +27,3 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
   },
 });
-
-export default SpeakerComponent;
