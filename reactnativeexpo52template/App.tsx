@@ -14,7 +14,7 @@ import {
 } from "react-native";
 import { Colors } from "@/constants/Colors";
 import { format } from "date-fns";
-import { CONFERENCE_DATA, PLANNING_DATA, SPEAKERS_DATA } from "./res/Stub";
+import { CONFERENCE_DATA, PLANNING_DATA, SPEAKERS_DATA } from './res/Stub';
 import { HomeScreen } from "./screens/HomeScreen";
 import { Speaker } from "./model/Speaker";
 import { SpeakersScreen } from "./screens/SpeakersScreen";
@@ -63,7 +63,7 @@ export default function App() {
           from={format(CONFERENCE_DATA.from, "EE d MMM")}
           to={format(CONFERENCE_DATA.to, "EE d MMM yyyy")}
           speakers={SPEAKERS_DATA}
-          plannings={PLANNING_DATA[0].slots[0].type()}
+          plannings={PLANNING_DATA}
         />
       </SafeAreaView>
     </>

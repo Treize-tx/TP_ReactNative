@@ -64,7 +64,7 @@ export class Speaker {
   }
 
   public static fromJsonArray(jsonArray: any): Speaker[] {
-    let speakers = []
+    let speakers = [] 
     jsonArray.forEach(obj => {
         speakers.push(this.fromJsonObject(obj));
     });

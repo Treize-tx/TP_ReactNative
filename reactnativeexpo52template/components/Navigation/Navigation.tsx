@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeScreen } from "@/screens/HomeScreen";
 import { SpeakersNavigator } from "@/components/Navigation/SpeakersNavigator";
 import { Image, View, StyleSheet } from "react-native";
-import PlanningNavigator from "../Planning/PlanningNavigator";
+import { PlanningNavigator } from "./PlanningNavigator";
 import { Planning } from '@/model/Planning';
 
 interface NavigationProps {
@@ -12,7 +12,7 @@ interface NavigationProps {
   from: string;
   to: string;
   speakers: { name: string; image: string }[];
-  plannings: string;
+  plannings: Planning[];
 }
 
 const Tab = createBottomTabNavigator();

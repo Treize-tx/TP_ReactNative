@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-export const Day2 = () => {
+export const Day = () => {
     return(
-        <>
+        <SafeAreaView>
         <Text> Bonjour </Text>
-        <Text> Bonjour </Text>
-        </>
+        </SafeAreaView>
     );
 }
