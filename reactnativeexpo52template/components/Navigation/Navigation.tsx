@@ -20,13 +20,7 @@ const homeIcon = require("@/assets/images/companion_icon.png");
 const speakersIcon = require("@/assets/images/speakers.png");
 const planningIcon = require("@/assets/images/planning.png")
 
-export const Navigation: React.FC<NavigationProps> = ({
-  conferenceName,
-  from,
-  to,
-  speakers,
-  plannings,
-}) => {
+export const Navigation = ({ conferenceName, from, to, speakers, plannings }: NavigationProps) => {
   return (
     <NavigationContainer>
       <Tab.Navigator

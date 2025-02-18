@@ -11,7 +11,7 @@ type SpeakersNavigatorProps = {
   route: RouteProp<{ params: { speakers: any } }, 'params'>;
 };
 
-export const SpeakersNavigator: React.FC<SpeakersNavigatorProps> = ({ route }) => {
+export const SpeakersNavigator = ({ route }: SpeakersNavigatorProps) => {
   const { speakers } = route.params;
   return (
     <Stack.Navigator initialRouteName="Speakers" id={undefined}>

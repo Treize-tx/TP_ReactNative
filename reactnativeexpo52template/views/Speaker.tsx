@@ -5,7 +5,7 @@ interface SpeakerProps {
     route: any;
 }
 
-export const Speaker: React.FC<SpeakerProps> = ({ route }) => {
+export const Speaker = ({ route }: SpeakerProps) => {
     const { speaker } = route.params;
     return (
         <View style={styles.container}>

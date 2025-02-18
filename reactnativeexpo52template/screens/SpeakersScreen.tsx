@@ -11,7 +11,7 @@ interface SpeakersScreenProps {
   speakers: Speaker[];
 }
 
-export const SpeakersScreen: React.FC<SpeakersScreenProps> = ({ speakers }) => {
+export const SpeakersScreen = ({ speakers }: SpeakersScreenProps) => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   return (
     <SafeAreaProvider>

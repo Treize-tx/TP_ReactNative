@@ -1,29 +1,20 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Day } from '../Planning/Day';
-import {useState} from 'react';
-import { getPlanningForDay } from '@/res/PlanningService';
-import { Planning } from '@/model/Planning';
-import { RouteProp } from '@react-navigation/native';
+import { differenceInDays, addDays } from 'date-fns';
+import { PLANNING_DATA } from '@/res/Stub';
 
-interface PlanningNavigatorProps {
-  route: RouteProp<{ params: { plannings: any } }, 'params'>;
-}
-
-export const PlanningNavigator: React.FC<PlanningNavigatorProps> = ({ route }) => {
+export const PlanningNavigator = () => {
     const Tab = createMaterialTopTabNavigator();
-    
-    return (
-      <Tab.Navigator id={undefined}>
-      {route.params.plannings.map((planning, index) => (
-        <Tab.Screen
-          key={index}
-          name={`Day${index + 1}`}
-          component={Day}
-          initialParams={{ planning }}
-        />
-      ))}
-    </Tab.Navigator>
-    );
-}
+    const plannings = PLANNING_DATA;
 
+    return (
+        <Tab.Navigator id={undefined}>
+            <Tab.Screen
+                name="Jour 1"
+                component={Day}
+                initialParams={{ planning: plannings[0] }}>
+            </Tab.Screen>
+        </Tab.Navigator>
+    );
+};
